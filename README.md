@@ -3,6 +3,10 @@
 [![dependency status](https://deps.rs/repo/github/emilk/egui_template/status.svg)](https://deps.rs/repo/github/emilk/egui_template)
 [![Build Status](https://github.com/emilk/egui_template/workflows/CI/badge.svg)](https://github.com/emilk/egui_template/actions?workflow=CI)
 
+根据官网建议做了一些修改，用于显示、输入中文字符。
+According to the recommendations of the official website, made some change to display and input Chinese characters.
+TTF文件来自macOS系统，正式使用请自行获取有版权的字体文件。
+
 This is a template repo for [egui](https://github.com/emilk/egui/).
 
 The goal is for this to be the simplest way to get started writing a GUI app in Rust.

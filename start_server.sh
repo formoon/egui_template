@@ -4,7 +4,8 @@ set -eu
 # Starts a local web-server that serves the contents of the `doc/` folder,
 # which is the folder to where the web version is compiled.
 
-cargo install basic-http-server
+# if not install , run next line
+# cargo install basic-http-server
 
 echo "open http://localhost:8080"
 

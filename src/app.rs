@@ -1,4 +1,6 @@
 use eframe::{egui, epi};
+use egui::FontDefinitions;
+use egui::FontFamily;
 
 /// We derive Deserialize/Serialize so we can persist app state on shutdown.
 #[cfg_attr(feature = "persistence", derive(serde::Deserialize, serde::Serialize))]
@@ -11,12 +13,31 @@ pub struct TemplateApp {
     #[cfg_attr(feature = "persistence", serde(skip))]
     value: f32,
 }
+impl TemplateApp{
+    fn setup_ttf(ctx: &egui::CtxRef){
+        //Custom font install
+        // # use epaint::text::*;
+        // 1. Create a `FontDefinitions` object.
+        let mut font = FontDefinitions::default();
+        // Install my own font (maybe supporting non-latin characters):
+        // 2. register the font content with a name.
+        font.font_data.insert("ttfHeiTi".to_owned(),
+            std::borrow::Cow::Borrowed(include_bytes!("../STXIHEI.ttf")));
+        //font.font_data.insert("mPlus".to_string(), Cow::from(&mPlus_font[..]));
+        // 3. Set two font families to use the font, font's name must have been
+        // Put new font first (highest priority)registered in `font_data`.
+        font.fonts_for_family.get_mut(&FontFamily::Monospace).unwrap().insert(0, "ttfHeiTi".to_owned());
+        font.fonts_for_family.get_mut(&FontFamily::Proportional).unwrap().insert(0, "ttfHeiTi".to_owned());
+        // 4. Configure context with modified `FontDefinitions`.
+        ctx.set_fonts(font);
+    }
+}
 
 impl Default for TemplateApp {
     fn default() -> Self {
         Self {
-            // Example stuff:
-            label: "Hello World!".to_owned(),
+            // Example stuff:, change a word to chinese
+            label: "Hello 世界!".to_owned(),
             value: 2.7,
         }
     }
@@ -43,6 +64,9 @@ impl epi::App for TemplateApp {
     /// Put your widgets into a `SidePanel`, `TopPanel`, `CentralPanel`, `Window` or `Area`.
     fn update(&mut self, ctx: &egui::CtxRef, frame: &mut epi::Frame<'_>) {
         let Self { label, value } = self;
+
+        // setup chinese ttf, do display chinese character
+        TemplateApp::setup_ttf(ctx);
 
         // Examples of how to create different panels and windows.
         // Pick whichever suits you.

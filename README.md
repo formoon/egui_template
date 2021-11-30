@@ -6,7 +6,7 @@
 根据官网建议做了一些修改，用于显示、输入中文字符。  
 According to the recommendations of the official website, made some change to display and input Chinese characters.  
 TTF文件来自macOS系统，正式使用请自行获取有版权的字体文件。  
-The TTF file comes from the macOS system, please use the copyrighted font file for commercial environment.  
+The TTF file comes from the macOS system, please use licensed font file for commercial environment.  
 
 This is a template repo for [egui](https://github.com/emilk/egui/).
 
